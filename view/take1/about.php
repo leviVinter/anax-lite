@@ -1,7 +1,12 @@
 <?php
-$status = $app->url->create("status");
-$imagePHP = $app->url->asset("img/php.png");
-$imageBootstrap = $app->url->asset("img/bootstrap.png");
+$this->renderView("take1/header", [
+    "title" => "Om",
+]);
+$this->renderView("navbar2/navbar");
+
+$status = $this->url("status");
+$imagePHP = $this->asset("img/php.png");
+$imageBootstrap = $this->asset("img/bootstrap.png");
 ?>
 <div class="container">
     <div class="row">
@@ -42,3 +47,6 @@ $imageBootstrap = $app->url->asset("img/bootstrap.png");
         </div>
     </div>
 </div>
+<?php
+$this->renderView("take1/footer");
+?>

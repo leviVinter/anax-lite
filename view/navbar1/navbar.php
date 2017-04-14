@@ -9,6 +9,10 @@ $navbar = [
             "text" => "Hem",
             "route" => "",
         ],
+        "session" => [
+            "text" => "Session",
+            "route" => "session"
+        ],
         "report" => [
             "text" => "Redovisning",
             "route" => "report",
@@ -39,8 +43,10 @@ $navbar = [
             <ul class="<?= $navbar["config"]["navbar-class"] ?>">
 
             <?php foreach ($navbar["items"] as $item) : ?>
-                <li>
-                    <a href="<?= $app->url->create($item["route"]) ?>">
+                <li <?php if ($item["route"] == $app->request->getRoute()) : ?>
+                    class="active"
+                    <?php endif ?>
+                    ><a href="<?= $app->url->create($item["route"]) ?>">
                         <?= $item["text"] ?>
                     </a>
                 </li>

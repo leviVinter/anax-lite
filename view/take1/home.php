@@ -1,5 +1,9 @@
 <?php
-$imageMe = $app->url->asset("img/thomas.png");
+$this->renderView("take1/header", [
+    "title" => "Hem",
+]);
+$this->renderView("navbar2/navbar");
+$imageMe = $this->asset("img/thomas.png");
 ?>
 <div class="container">
     <div class="row">
@@ -31,3 +35,7 @@ $imageMe = $app->url->asset("img/thomas.png");
         </div>
     </div>
 </div>
+
+<?php
+$this->renderView("take1/footer");
+?>

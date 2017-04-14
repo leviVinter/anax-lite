@@ -1,3 +1,9 @@
+<?php
+$this->renderView("take1/header", [
+    "title" => "Redovisning",
+]);
+$this->renderView("navbar2/navbar");
+?>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -46,3 +52,6 @@
         </div>
     </div>
 </div>
+<?php
+$this->renderView("take1/footer");
+?>
