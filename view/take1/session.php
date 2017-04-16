@@ -4,7 +4,6 @@ $this->renderView("take1/header", [
 ]);
 $this->renderView("navbar2/navbar");
 $session = $app->session;
-// $session->start();
 if (!$session->has("myInt")) {
     $session->set("myInt", 0);
 }

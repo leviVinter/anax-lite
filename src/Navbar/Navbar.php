@@ -19,7 +19,20 @@ class Navbar implements \Anax\Common\ConfigureInterface
      */
     public function getHTML()
     {
-        ;
+        $config = $this->config;
+        $html = "<ul class='" .
+                $config["config"]["navbar-left-class"] .
+                "'>";
+        foreach ($config["items"] as $item) {
+            $html .= "<li";
+            if ($item["route"] == $this->currentRoute) {
+                $html .= " class='active'";
+            }
+            $html .= "><a href='" . $item["route"] . "'>" .
+                     $item["text"] . "</a></li>";
+        }
+        $html .= "</ul>";
+        return $html;
     }
 
     /**
@@ -35,15 +48,6 @@ class Navbar implements \Anax\Common\ConfigureInterface
     }
 
     /**
-     * Get the current route.
-     * @return string
-     */
-    public function getCurrentRoute()
-    {
-        return $this->currentRoute;
-    }
-
-    /**
      * Sets the callable to use for creating routes.
      *
      * @param callable $urlCreate to create framework urls.
@@ -53,25 +57,5 @@ class Navbar implements \Anax\Common\ConfigureInterface
     public function setUrlCreator($urlCreate)
     {
         $this->urlCreator = $urlCreate;
-    }
-
-    /**
-     * Get url
-     * @param string $path Name of the route to get the url for.
-     * @return string
-     */
-    public function getUrl($path)
-    {
-        $url = call_user_func($this->urlCreator, $path);
-        return $url;
-    }
-
-    /**
-     * Get configure array
-     * @return []
-     */
-    public function getConfig()
-    {
-        return $this->config;
     }
 }

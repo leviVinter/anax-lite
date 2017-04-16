@@ -63,6 +63,21 @@ class Session
     }
 
     /**
+     * Get value from $_SESSION and then delete it.
+     * @param string $key Key for getting the value.
+     * @param $default optional The return value if not found
+     * @return string Value from $_SESSION
+     */
+    public function getOnce($key, $default = false)
+    {
+        $value = $this->get($key, $default);
+        if ($value) {
+            unset($_SESSION[$key]);
+        }
+        return $value;
+    }
+
+    /**
      * Destroys the session and sets cookie
      * @return void
      */

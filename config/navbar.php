@@ -3,7 +3,6 @@
  * Config file for the navbar.
  */
 return [
-    "brand" => "THOMAS",
     "config" => [
         "navbar-left-class" => "nav navbar-nav"
     ],
