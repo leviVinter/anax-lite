@@ -93,7 +93,52 @@ $this->renderView("navbar2/navbar");
                 googla upp hur något används. Men kanske att jag tvingar mig att använda manualen
                 kommer betala för sig i framtiden. Jag är inte van vid att använda funktioner eller
                 operatorer som + och -, så det är lite nytt för mig vilket är intressant.</p>
-            <h3>Kmom03</h3><p>(Kommer uppdateras)</p>
+            <h3>Kmom03</h3>
+            <p><b>Hur kändes det att jobba med PHP PDO, SQL och MySQL?</b></p>
+            <p>Jag är bekant med PDO och MySQL sedan tidigare så det tyckte jag inte var några
+                konstigheter med. Det handlade nog mer om att påminna mig om hur man skrev allting
+                igen. Jag gillar hur PDO fungerar, det gör kommunikationen med databasen mycket enkel,
+                och man slipper tänka på potentiell SQL-injektion. Att skriva MySQL-kod är någonting
+                jag gärna skulle vilja lära mig mer om. Det blir tydligt i uppgiften “Kom igång med
+                SQL” att det finns mycket att lära sig för att kunna räknas någon sorts expert.</p>
+            <p><b>Reflektera kring koden du skrev för att lösa uppgifterna, klasser, formulär,
+                integration Anax Lite?</b></p>
+            <p>Det blev att jag skapade fem nya klasser i det här kursmomentet. Database, Query,
+                User, Cookie, och Helpers. Alla är integrerade i ramverket eftersom jag ser användning
+                för dem i flera sammanhang. Database sköter PDO-koden som kommunicerar med databasen,
+                Query sköter själva SQL-koden som sedan används av Database, User samlar information
+                om en inloggad användare, Cookie sköter cookies, och Helpers sköter lite olika saker
+                som att hämta värden från $_POST och $_GET med hjälp av htmlentities och hjälper till
+                med kod för paginering. Jag använder mig ofta av validations-router när man loggar in,
+                skapar ett konto, ändrar lösenord etc. Dessa router har ingen egen view utan skickar
+                en sedan vidare till en ny route beroende på uppgifterna som skickats in. Jag har
+                försökt att förutspå de problem som kan uppstå vid varje route och hantera dem. Till
+                exempel gör jag en koll ifall en admin är inloggad för varje route som bara ska nås
+                av en sådan, och samma sak med router för vanliga användare. Jag kollar också att alla
+                värden som ska ha skickats med POST eller GET finns med. Ifall det finns något fel så
+                skickas man alltid till en ny passande route. Det blev rätt så många router att skriva,
+                men det kändes också nödvändigt för att allt ska fungera som jag vill. De flesta router
+                jag skrivit är sådana utan en egen view, utan de sköter bara en viss logik och skickar
+                en sedan vidare. </p>
+            <p><b>Känner du dig hemma i ramverket, dess komponenter och struktur?</b></p>
+            <p>Det här kursmomentet har jag känt mig mycket mer hemma än tidigare. Jag har vetat direkt
+                var jag ska sätta in mina nya filer, medan jag tidigare har fått tänka mer “hur
+                fungerade det här nu igen?”. Det känns väldigt skönt eftersom jag tidigare har funderat
+                hur logiskt allt kommer kännas i slutändan, men det verkar som jag kommer ha ganska bra
+                klarhet över ramverket när kursen är slut.</p>
+            <p><b>Hur bedömer du svårighetsgraden på kursens inledande kursmoment, känner du att du lär
+                dig något/bra saker?</b></p>
+            <p>Jag skulle nog inte säga att svårighetsgraden har varit så jättestor. Det är mest att
+                det tagit väldigt mycket tid, mer än någon tidigare kurs. I det här kursmomentet så var
+                det väldigt hjälpsamt att man får kod för paginering i en övning. Annars hade nog just
+                pagineringsdelen av koden kunnat vara ett problem vad gäller svårighetsgraden.
+                Kalender-uppgiften tyckte jag dock var lite knepig, och var tvungen att googla runt lite
+                för att få tips om hur jag kunde skriva koden. Men för det mesta har det varit ganska
+                rättframt hur man ska lösa uppgifter. Det jag mest känner jag lär mig om är att verkligen
+                bli van vid att använda mig utav klasser och objekt, att bli van vid att skriva kod i
+                ett ramverk, och att skriva SQL-kod. Jag tycker dock att kursmomenten borde kortas ner
+                lite eftersom jag inte alls känt att jag haft tid till extrauppgifter, fastän jag lagt
+                ner mycket tid om dagarna på att jobba med kursmomenten.</p>
             <h3>Kmom04</h3><p>(Kommer uppdateras)</p>
             <h3>Kmom05</h3><p>(Kommer uppdateras)</p>
             <h3>Kmom06</h3><p>(Kommer uppdateras)</p>

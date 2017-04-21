@@ -21,6 +21,11 @@ $app->router = new \Anax\Route\RouterInjectable();
 $app->view = new \Anax\View\ViewContainer();
 $app->navbar = new \Vinter\Navbar\Navbar();
 $app->session = new \Vinter\Session\Session();
+$app->db = new \Vinter\Database\DatabaseConfigure();
+$app->query = new \Vinter\Database\Query();
+$app->helpers = new \Vinter\Helpers\Helpers();
+$app->user = new \Vinter\User\User();
+$app->cookie = new \Vinter\Cookie\Cookie();
 
 // Inject $app into the view container for use in view files.
 $app->view->setApp($app);
@@ -42,13 +47,33 @@ $app->url->setScriptName($app->request->getScriptName());
 $app->url->configure("url.php");
 $app->url->setDefaultsFromConfiguration();
 
-// Setup navbar for use later
-$app->navbar->configure("navbar.php");
-$app->navbar->setCurrentRoute($app->request->getRoute());
-$app->navbar->setUrlCreator([$app->url, "create"]);
 
 // Start session
 $app->session->start();
+$loggedIn = $app->session->get("admin")
+    ?: $app->session->get("user");
+
+// Setup navbar
+$app->navbar->configure("navbar.php");
+$app->navbar->setCurrentRoute($app->request->getRoute());
+$app->navbar->setUrlCreator([$app->url, "create"]);
+$app->navbar->setLoggedIn($loggedIn);
+$admin = $app->session->has("admin") ? true : false;
+$app->navbar->setAdmin($admin);
+
+// Configure database
+$app->db->configure("database.php");
+$app->db->setDefaultsFromConfiguration();
+$app->db->connect();
+
+// Setup query object
+$app->query->setDatabaseObj($app->db);
+
+// Setup user
+if ($app->session->has("user")) {
+    $app->user->setQueryObj($app->query);
+    $app->user->fetchInfo($loggedIn);
+}
 
 // Load the routes
 require ANAX_INSTALL_PATH . "/config/route.php";

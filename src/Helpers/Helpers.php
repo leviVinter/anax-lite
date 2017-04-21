@@ -1,0 +1,80 @@
+<?php
+
+namespace Vinter\Helpers;
+
+/**
+ * Class for letting you write less code
+ */
+class Helpers
+{
+    /**
+     * Get $_GET value by key
+     * @param $key string The key
+     * @param $default mixed Value to return if key does not exist
+     * @return string
+     */
+    public function getGet($key, $default = null)
+    {
+        $value = isset($_GET[$key])
+            ? htmlentities($_GET[$key], ENT_QUOTES, "UTF-8")
+            : $default;
+        return $value;
+    }
+
+    /**
+     * Get post value by key
+     * @param $key string The key
+     * @param $default mixed Value to return if key does not exist
+     * @return string
+     */
+    public function getPost($key, $default = null)
+    {
+        $value = isset($_POST[$key])
+            ? htmlentities($_POST[$key], ENT_QUOTES, "UTF-8")
+            : $default;
+        return $value;
+    }
+
+    /**
+     * Use current querystring as base, extract it to an array, merge it
+     * with incoming $options and recreate the querystring using the resulting
+     * array
+     * @param array $options To merge into existing querystring
+     * @param string $prepend To the resulting query string
+     * @return string as a url with the updated query string
+     */
+    public function mergeQueryString($options, $prepend = "?")
+    {
+        // Parse querystring into array
+        $query = [];
+        parse_str($_SERVER["QUERY_STRING"], $query);
+
+        // Merge query string with new options
+        $query = array_merge($query, $options);
+
+        // Build and return the modified querystring as url
+        return $prepend . http_build_query($query);
+    }
+
+    /**
+     * Function to create links for sorting and keeping the original querystring.
+     * @param string $column the name of the database column to sort by
+     * @param string $route  prepend this to the anchor href
+     * @return string with links to order by column.
+     */
+    public function orderby2($column, $route = "?")
+    {
+        $asc = $this->mergeQueryString(["orderby" => $column, "order" => "asc"], $route);
+        $desc = $this->mergeQueryString(["orderby" => $column, "order" => "desc"], $route);
+
+        return <<<EOD
+<a href="$asc">
+<span class="glyphicon glyphicon-chevron-up">
+</a>
+<a href="$desc">
+<span class="glyphicon glyphicon-chevron-down">
+</a>
+</span>
+EOD;
+    }
+}

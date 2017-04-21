@@ -28,7 +28,7 @@ $imageMe = $this->asset("img/thomas.png");
                 Förutom programmering gillar jag även emellanåt att spela
                 datorspel, spela gitarr, och att läsa böcker om historia och
                 dylikt. Jag har även satt ett livsmål att lära mig japanska,
-                men det går inte i det allra största tempot, men kanske att
+                men det går inte i det allra högsta tempot, men kanske att
                 jag om en viss framtid kan åka till Japan och förstå vad folk
                 säger.
             </p>
