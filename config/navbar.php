@@ -20,6 +20,10 @@ return [
             "text" => "Kalender",
             "route" => "calendar"
         ],
+        "textfilter" => [
+            "text" => "Textfilter",
+            "route" => "textfilter"
+        ],
         "report" => [
             "text" => "Redovisning",
             "route" => "report"

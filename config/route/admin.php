@@ -13,21 +13,21 @@ $app->router->add("admin", function () use ($app) {
     //     ? $app->query->searchUsers($searchText)
     //     : $app->query->getAllUsers();
     // Get number of hits per page
-    $hits = $app->helpers->getGet("hits", 4);
+    $hits = $app->response->getGet("hits", 4);
     if (!(is_numeric($hits) && $hits > 0 && $hits <= 8)) {
         header("Location: {$adminRoute}");
         exit();
     }
 
     // Get max number of pages
-    $searchText = $app->helpers->getGet("search");
+    $searchText = $app->response->getGet("search");
     $max = $app->query->getCount($searchText);
     $max = $max->max > 0
         ? ceil($max->max / $hits)
         : 1;
 
     // Get current page
-    $page = $app->helpers->getGet("page", 1);
+    $page = $app->response->getGet("page", 1);
     if (!(is_numeric($page) && $page > 0 && $page <= $max)) {
         header("Location: {$adminRoute}");
         exit();
@@ -39,8 +39,8 @@ $app->router->add("admin", function () use ($app) {
     $orders = ["asc", "desc"];
 
     // Get settings from GET or use default
-    $orderBy = $app->helpers->getGet("orderby") ?: "id";
-    $order = $app->helpers->getGet("order") ?: "asc";
+    $orderBy = $app->response->getGet("orderby") ?: "id";
+    $order = $app->response->getGet("order") ?: "asc";
 
     // Incoming matches valid value sets
     if (!(in_array($orderBy, $columns) && in_array($order, $orders))) {
@@ -51,7 +51,7 @@ $app->router->add("admin", function () use ($app) {
         . "ORDER BY $orderBy $order LIMIT $hits OFFSET $offset;";
     $params = ["%{$searchText}%"];
     $res = $app->db->executeFetchAll($sql, $params);
-    $success = $app->helpers->getGet("success");
+    $success = $app->response->getGet("success");
     $app->view->add("login/admin", [
         "res" => $res,
         "max" => $max,
@@ -69,7 +69,7 @@ $app->router->add("admin/edit", function () use ($app) {
         exit();
     }
     $adminRoute = $app->url->create("admin");
-    $userName = $app->helpers->getGet("name");
+    $userName = $app->response->getGet("name");
     if (!$userName) {
         header("Location: {$adminRoute}");
         exit();
@@ -79,8 +79,8 @@ $app->router->add("admin/edit", function () use ($app) {
         header("Location: {$adminRoute}");
         exit();
     }
-    $error = $app->helpers->getGet("error");
-    $success = $app->helpers->getGet("success");
+    $error = $app->response->getGet("error");
+    $success = $app->response->getGet("success");
     $app->view->add("login/admin_edit", [
         "user" => $user,
         "error" => $error,
@@ -92,7 +92,7 @@ $app->router->add("admin/edit", function () use ($app) {
 
 $app->router->add("admin/delete", function () use ($app) {
     $loginRoute = $app->url->create("login");
-    $userName = $app->helpers->getGet("name");
+    $userName = $app->response->getGet("name");
     if (!$app->session->has("admin") || !$userName) {
         header("Location: {$loginRoute}");
         exit();

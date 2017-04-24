@@ -26,6 +26,7 @@ $app->query = new \Vinter\Database\Query();
 $app->helpers = new \Vinter\Helpers\Helpers();
 $app->user = new \Vinter\User\User();
 $app->cookie = new \Vinter\Cookie\Cookie();
+$app->textfilter = new \Vinter\Textfilter\Textfilter();
 
 // Inject $app into the view container for use in view files.
 $app->view->setApp($app);

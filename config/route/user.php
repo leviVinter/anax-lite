@@ -3,7 +3,7 @@
  * Routes
  */
 $app->router->add("new_user", function () use ($app) {
-    $error = $app->helpers->getGet("error");
+    $error = $app->response->getGet("error");
     $app->view->add("login/new_user", ["error" => $error]);
     $app->response->setBody([$app->view, "render"])
                   ->send();
@@ -62,8 +62,8 @@ $app->router->add("login", function () use ($app) {
         header("Location: {$adminRoute}");
         exit();
     }
-    $error = $app->helpers->getGet("error");
-    $logout = $app->helpers->getGet("logout");
+    $error = $app->response->getGet("error");
+    $logout = $app->response->getGet("logout");
     $app->view->add("login/login", [
         "error" => $error,
         "logout" => $logout
@@ -116,7 +116,7 @@ $app->router->add("profile", function () use ($app) {
         exit();
     }
     $app->cookie->set("date", date('Y-m-d'));
-    $success = $app->helpers->getGet("success");
+    $success = $app->response->getGet("success");
     $app->view->add("login/profile", ["success" => $success]);
     $app->response->setBody([$app->view, "render"])
                   ->send();
@@ -128,7 +128,7 @@ $app->router->add("profile/edit", function () use ($app) {
         header("Location: {$loginRoute}");
         exit();
     }
-    $error = $app->helpers->getGet("error");
+    $error = $app->response->getGet("error");
     $app->view->add("login/profile_edit", ["error" => $error]);
     $app->response->setBody([$app->view, "render"])
                   ->send();

@@ -36,6 +36,12 @@ $app->router->add("calendar/next", function () use ($app) {
     exit;
 });
 
+$app->router->add("textfilter", function () use ($app) {
+    $app->view->add("take1/textfilter");
+    $app->response->setBody([$app->view, "render"])
+                  ->send();
+});
+
 $app->router->add("report", function () use ($app) {
     $app->view->add("take1/report");
     $app->response->setBody([$app->view, "render"])
