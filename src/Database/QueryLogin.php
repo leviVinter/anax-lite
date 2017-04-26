@@ -5,7 +5,7 @@ namespace Vinter\Database;
 /**
  * Class for handling queries for database
  */
-class Query
+class QueryLogin
 {
     private $db;
 

@@ -10,6 +10,19 @@ body {
     margin-bottom: 60px;
 }
 
+.dropdown-menu {
+    background-color: #222222;
+}
+
+.dropdown-menu > li > a {
+    color: #9d9d9d;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #080808;
+    color: white;
+}
+
 .container {
     max-width: 970px;
 }
@@ -91,6 +104,44 @@ body {
 
 .glyphicon-remove {
     color: #d9534f;
+}
+
+/*
+ * Blog
+ */
+.blog-post-title {
+    margin-bottom: 5px;
+}
+
+.blog-post-meta {
+    color: #999;
+}
+
+.blog-post {
+    margin-bottom: 40px;
+}
+
+.sidebar {
+    padding: 15px;
+    background-color: #F5F5F5;
+}
+
+.sidebar > h4 {
+    margin-top: 0;
+}
+
+.sidebar-list > ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.sidebar-list > ul > li {
+    padding-bottom: 5px;
+}
+
+.sidebar-list > ul:last-child {
+    padding-bottom: 0;
 }
 
 .footer {

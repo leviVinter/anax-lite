@@ -17,7 +17,7 @@ class Textfilter
     {
         $callbacks = [
             "bbcode"    => "bbcode2html",
-            "clickable" => "makeClickable",
+            "link" => "makeClickable",
             "markdown"  => "markdown",
             "nl2br"     => "nl2br",
             "strip"     => "strip",
@@ -116,5 +116,19 @@ class Textfilter
     public function strip($text)
     {
         return strip_tags($text);
+    }
+
+    /**
+     * Create a slug of a string, to be used as url.
+     * @param string $str the string to format as slug.
+     * @return str the formatted slug.
+     */
+    public function slugify($str)
+    {
+        $str = mb_strtolower(trim($str));
+        $str = str_replace(array('å','ä','ö'), array('a','a','o'), $str);
+        $str = preg_replace('/[^a-z0-9-]/', '-', $str);
+        $str = trim(preg_replace('/-+/', '-', $str), '-');
+        return $str;
     }
 }

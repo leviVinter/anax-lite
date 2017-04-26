@@ -25,14 +25,13 @@ class Navbar implements \Anax\Common\ConfigureInterface
         $itemsRight = $this->config["items-right"];
         $html = "<ul class='{$config['navbar-left-class']}'>";
         foreach ($items as $item) {
-            $active = $item["route"] == $this->currentRoute
-                ? "active" : "";
-            $route = call_user_func($this->urlCreator, $item["route"]);
-            $html .= "<li class='{$active}'>";
-            $html .= "<a href='{$route}'>{$item['text']}</a></li>";
+            $html .= array_key_exists("dropdown-menu", $item)
+                ? $this->createDropdownItem($item, $item["text"])
+                : $this->createItem($item);
         }
         $html .= "</ul>";
         $html .= "<ul class='{$config['navbar-right-class']}'>";
+        // Login and create account routes
         foreach ($itemsRight as $item) {
             $active = $item["route"] == $this->currentRoute
                 ? "active" : "";
@@ -92,5 +91,42 @@ class Navbar implements \Anax\Common\ConfigureInterface
     public function setAdmin($admin)
     {
         $this->admin = $admin;
+    }
+
+    /**
+     * Create html code for navbar item and return string
+     * @param $item array Holds information about a navbar item
+     * @return string
+     */
+    private function createItem($item)
+    {
+        $active = $item["route"] == $this->currentRoute
+            ? "active" : "";
+        $route = call_user_func($this->urlCreator, $item["route"]);
+        $html = "<li class='{$active}'>";
+        $html .= "<a href='{$route}'>{$item['text']}</a></li>";
+        return $html;
+    }
+
+    /**
+     * Create html code for navbar dropdown item and return string
+     * @param $item array All the items in dropdown
+     * @param $itemText string Name of the dropdown toggle-button
+     * @return string
+     */
+    private function createDropdownItem($item, $itemText)
+    {
+        $html = "<li class='dropdown'>"
+            . "<a href='#' class='dropdown-toggle' data-toggle='dropdown' "
+            . "role='button' aria-haspopup='true' aria-expanded='false'>"
+            . "{$itemText} <span class='caret'></span></a>";
+        $html .= "<ul class='dropdown-menu'>";
+        foreach ($item["items"] as $subItem) {
+            // var_dump($subItem);
+            $route = call_user_func($this->urlCreator, $subItem["route"]);
+            $html .= "<li><a href='{$route}'>{$subItem['text']}</a></li>";
+        }
+        $html .= "</ul></li>";
+        return $html;
     }
 }

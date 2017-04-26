@@ -22,7 +22,8 @@ $app->view = new \Anax\View\ViewContainer();
 $app->navbar = new \Vinter\Navbar\Navbar();
 $app->session = new \Vinter\Session\Session();
 $app->db = new \Vinter\Database\DatabaseConfigure();
-$app->query = new \Vinter\Database\Query();
+$app->queryLogin = new \Vinter\Database\QueryLogin();
+$app->queryContent = new \Vinter\Database\QueryContent();
 $app->helpers = new \Vinter\Helpers\Helpers();
 $app->user = new \Vinter\User\User();
 $app->cookie = new \Vinter\Cookie\Cookie();
@@ -67,12 +68,13 @@ $app->db->configure("database.php");
 $app->db->setDefaultsFromConfiguration();
 $app->db->connect();
 
-// Setup query object
-$app->query->setDatabaseObj($app->db);
+// Setup query objects
+$app->queryLogin->setDatabaseObj($app->db);
+$app->queryContent->setDatabaseObj($app->db);
 
 // Setup user
 if ($app->session->has("user")) {
-    $app->user->setQueryObj($app->query);
+    $app->user->setQueryObj($app->queryLogin);
     $app->user->fetchInfo($loggedIn);
 }
 

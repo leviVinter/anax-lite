@@ -139,7 +139,56 @@ $this->renderView("navbar2/navbar");
                 ett ramverk, och att skriva SQL-kod. Jag tycker dock att kursmomenten borde kortas ner
                 lite eftersom jag inte alls känt att jag haft tid till extrauppgifter, fastän jag lagt
                 ner mycket tid om dagarna på att jobba med kursmomenten.</p>
-            <h3>Kmom04</h3><p>(Kommer uppdateras)</p>
+            <h3>Kmom04</h3>
+            <p><b>Finns det något att säga kring din klass för textfilter, eller rent allmänt om
+                formatering och filtrering av text som sparas i databasen av användaren?</b></p>
+            <p>Jag har mest sett filtrering av användares texter som en säkerhetsfråga. Att se till att
+                ingen JavaScript-kod slås igång när man skriver ut det i browsern till exempel. Men det
+                är ju väldigt användbart i andra sammanhang som visas i det här kursmomentet. Filtrering
+                av texter är något man borde vara väldigt insatt i om man vill att en webbplats man har
+                ansvar för ska vara säker, så det är bra att vi får gå in lite på det.</p>
+            <p><b>Berätta hur du tänkte när du strukturerade klasserna och databasen för webbsidor och
+                bloggposter.</b></p>
+            <p>De enda klasserna jag skapat det här kursmomentet är Textfilter och QueryContent.
+                QueryContent sköter helt enkelt all sql-kod och kommunicerar med Database-klassen för
+                content-tabellen. Jag kunde inte riktigt motivera varför jag skulle ha en Content-, Page-,
+                och Blog-klass, så jag lät helt enkelt bli att skapa sådana. Det skulle möjligtvis vara
+                för att ha mer organiserad kod, men eftersom att jag inte gillar att använda mig av en
+                createHTML-metod i klasser där man skapar en sträng med all HTML-kod så kunde jag inte
+                riktigt se nyttan. Kanske någon kan övertala mig till att klasser hade varit bättre, men
+                för stunden kör jag utan. Textfilter och QueryContent är en del av ramverket. Databasen
+                är gjord som det står i övningen. Det är alltså bara en tabell (content) där all
+                information som title, slug, path, created, o.s.v. finns med. Inga konstigheter.</p>
+            <p><b>Förklara vilka routes som används för att demonstrera funktionaliteten för webbsidor
+                och blogg (så att en utomstående kan testa).</b></p>
+            <p>Om man klickar på “Innehåll” i navbaren får man fram en dropdown-lista där Pages, Blogg,
+                och Block finns med. Klickar man Pages får man fram en tabell med allt innehåll av typen
+                page, och klickar man på ett titelnamn får man se det filtrerade innehållet. Klickar du på
+                Blogg kommer en lista fram med alla bloggar, och du kan klicka på “Läs mer” för att se dem
+                enskilda. På Block så kommer du till en sida där en sidebar av typen block helt enkelt
+                visas upp tillsammans med lite annan text. Om du loggar in som admin (user: admin, pass:
+                admin) så kan du från admin-sidan klicka på “Innehåll”. Du får då se en lista på allt
+                innehåll, även om de är opublicerade eller borttagna, och därifrån välja att redigera
+                enskilt innehåll. Från dropdownen i navbaren kan du bara se publicerat innehåll.</p>
+            <p><b>Hur känns det att dokumentera databasen så här i efterhand?</b></p>
+            <p>Det gick väldigt enkelt och snabbt. Det är ju väldigt likt hur man dokumenterar klasser i
+                ett UML-diagram, så jag kände mig redan bekant med sättet att tänka. Precis som Mikael
+                Roos sa i föreläsningen för Kmom03 så är det ju väldigt bra att ha om man ska återkomma
+                till sin kod och databas efter en lång tid. Så de kan vara bra att ha även om man jobbar
+                helt själv på ett projekt, utan medarbetare.</p>
+            <p><b>Om du är självkritisk till koden du skriver i Anax Lite, ser du förbättringspotential
+                och möjligheter till alternativ struktur av din kod?</b></p>
+            <p>Jag har kikat lite snabbt i default-mappen i views och har sett att metoder används med
+                hjälp av “$this” som jag inte har någon koll på. Är säker på att det finns användbara
+                saker att använda i ramverket som hade gjort min kod snyggare, men jag har inte koll på
+                allt sånt än. Det har blivit väldigt många router, och det borde finnas ett sätt att
+                organisera det bättre. Till exempel är det många router som fungerar som en
+                processing-route för att hantera $_POST-variabler och kommunicera med databasen för att
+                sedan redirecta en till en ny route, och det ser väldigt stökigt ut. Men jag vet inte
+                riktigt hur det kan skötas på ett snyggt sätt. Men det borde gå att fixa tycker jag.
+                Det handlar mest om organisering, och jag känner inte att jag är någon expert i det
+                området, men man måste ju göra ett första försök med nya saker man lär sig, och sedan
+                förbättra sina metoder allt eftersom man får erfarenhet.</p>
             <h3>Kmom05</h3><p>(Kommer uppdateras)</p>
             <h3>Kmom06</h3><p>(Kommer uppdateras)</p>
             <h3>Kmom07-10</h3><p>(Kommer uppdateras)</p>

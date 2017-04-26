@@ -12,17 +12,41 @@ return [
             "text" => "Hem",
             "route" => ""
         ],
-        "session" => [
-            "text" => "Session",
-            "route" => "session"
+        "assignments" => [
+            "text" => "Uppgifter",
+            "items" => [
+                "session" => [
+                    "text" => "Session",
+                    "route" => "session"
+                ],
+                "calendar" => [
+                    "text" => "Kalender",
+                    "route" => "calendar"
+                ],
+                "textfilter" => [
+                    "text" => "Textfilter",
+                    "route" => "textfilter"
+                ]
+            ],
+            "dropdown-menu" => true
         ],
-        "calendar" => [
-            "text" => "Kalender",
-            "route" => "calendar"
-        ],
-        "textfilter" => [
-            "text" => "Textfilter",
-            "route" => "textfilter"
+        "content" => [
+            "text" => "Innehåll",
+            "items" => [
+                "pages" => [
+                    "text" => "Pages",
+                    "route" => "content/pages"
+                ],
+                "blog" => [
+                    "text" => "Blogg",
+                    "route" => "content/blogs"
+                ],
+                "block" => [
+                    "text" => "Block",
+                    "route" => "content/blocks"
+                ]
+            ],
+            "dropdown-menu" => true
         ],
         "report" => [
             "text" => "Redovisning",

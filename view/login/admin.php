@@ -33,6 +33,11 @@ $nextPage = is_numeric($page) && intval($page) < intval($max)
                         Skapa användare
                     </a>
                 </li>
+                <li role="presentation" class="active">
+                    <a href="<?= $app->url->create('content/edit') ?>">
+                        Innehåll
+                    </a>
+                </li>
             </ul>
             <br>
         </div>
@@ -58,7 +63,7 @@ $nextPage = is_numeric($page) && intval($page) < intval($max)
                 <a href="<?= $app->helpers->mergeQueryString(['hits' => 4]) ?>">4</a>
                 <a href="<?= $app->helpers->mergeQueryString(['hits' => 8]) ?>">8</a>
             </p>
-            <table class="table .table-bordered">
+            <table class="table">
                 <tr>
                     <th>Id <?= $app->helpers->orderby2("id") ?></th>
                     <th>Namn <?= $app->helpers->orderby2("name") ?></th>

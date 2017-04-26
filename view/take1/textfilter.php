@@ -38,7 +38,7 @@ $escText = "Här filtreras texten igenom htmlentities vilket för att "
             <p><?= $app->textfilter->doFilter($nl2brText, "nl2br") ?></p>
             <h2>link</h2>
             <p><?= $linkText ?></p>
-            <p><?= $app->textfilter->doFilter($linkText, "clickable") ?></p>
+            <p><?= $app->textfilter->doFilter($linkText, "link") ?></p>
             <h2>Markdown</h2>
             <p><?= $markdownText ?></p>
             <p><?= $app->textfilter->doFilter($markdownText, "markdown") ?></p>
