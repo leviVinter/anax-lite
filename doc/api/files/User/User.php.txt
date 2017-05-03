@@ -1,0 +1,72 @@
+<?php
+
+namespace Vinter\User;
+
+/**
+ * Class for handling logged in user
+ */
+class User
+{
+    private $query;
+    private $name;
+    private $present;
+    private $favMovie;
+    private $favColor;
+
+    /**
+     * Set query object
+     * @param $queryObj obj The object which will handle queries
+     * @return void
+     */
+    public function setQueryObj($queryObj)
+    {
+        $this->query = $queryObj;
+    }
+
+    /**
+     * Fetch information about user from database
+     * @param $userName string Name of the user
+     * @return void
+     */
+    public function fetchInfo($userName)
+    {
+        if (!$userName) {
+            return;
+        }
+        $res = $this->query->getUser($userName);
+        $this->name = $res->name;
+        $this->present = $res->presentation;
+        $this->favMovie = $res->fav_movie;
+        $this->favColor = $res->fav_color;
+    }
+
+    /**
+     * Get user info in the form of an array
+     * @return array
+     */
+    public function getInfo()
+    {
+        return [
+            "name" => $this->name,
+            "presentation" => $this->present,
+            "favMovie" => $this->favMovie,
+            "favColor" => $this->favColor
+        ];
+    }
+
+    /**
+     * Get html with info about user
+     * @return array
+     */
+    public function getHtml()
+    {
+        $html = "<h3>Presentation</h3>"
+            . "<p>{$this->present}</p>"
+            . "<h3>Favoritfilm</h3>"
+            . "<p>{$this->favMovie}</p>"
+            . "<h3>Favoritfärg</h3>"
+            . "<p>{$this->favColor}</p>";
+        return $html;
+    }
+}
+

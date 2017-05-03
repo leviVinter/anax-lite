@@ -38,6 +38,11 @@ $nextPage = is_numeric($page) && intval($page) < intval($max)
                         Innehåll
                     </a>
                 </li>
+                <li role="presentation" class="active">
+                    <a href="<?= $app->url->create('admin/webshop') ?>">
+                        Webbshoppen
+                    </a>
+                </li>
             </ul>
             <br>
         </div>

@@ -24,6 +24,7 @@ $app->session = new \Vinter\Session\Session();
 $app->db = new \Vinter\Database\DatabaseConfigure();
 $app->queryLogin = new \Vinter\Database\QueryLogin();
 $app->queryContent = new \Vinter\Database\QueryContent();
+$app->queryWebshop = new \Vinter\Database\QueryWebshop();
 $app->helpers = new \Vinter\Helpers\Helpers();
 $app->user = new \Vinter\User\User();
 $app->cookie = new \Vinter\Cookie\Cookie();
@@ -71,6 +72,7 @@ $app->db->connect();
 // Setup query objects
 $app->queryLogin->setDatabaseObj($app->db);
 $app->queryContent->setDatabaseObj($app->db);
+$app->queryWebshop->setDatabaseObj($app->db);
 
 // Setup user
 if ($app->session->has("user")) {

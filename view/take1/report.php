@@ -189,7 +189,37 @@ $this->renderView("navbar2/navbar");
                 Det handlar mest om organisering, och jag känner inte att jag är någon expert i det
                 området, men man måste ju göra ett första försök med nya saker man lär sig, och sedan
                 förbättra sina metoder allt eftersom man får erfarenhet.</p>
-            <h3>Kmom05</h3><p>(Kommer uppdateras)</p>
+            <h3>Kmom05</h3>
+            <p><b>Gick det bra att komma igång med det vi kallar programmering av databas, med
+                transaktioner, lagrade procedurer, triggers, funktioner?</b></p>
+            <p>Ja det fungerade bra. Övningarna gjorde att jag snabbt kunde sätta igång med alltihop.
+                Det är första gången jag försökt mig på sådan typ av programmering så det var
+                nyttigt.</p>
+            <p><b>Hur är din syn på att programmera på detta viset i databasen?</b></p>
+            <p>Jag tycker det verkar kunna vara till stor hjälp. Det kändes smidigt att kunna
+                programmera på det sättet för att testa hur databasen fungerar, utan att behöva skriva
+                någon PHP-kod. Sen är det lite svårare att veta vad som är bäst i slutändan när databasen
+                ska kopplas till själva webbplatsen. Ska man programmera i databasen eller med PHP? Om
+                man programmerar i databasen blir det ju lätt att använda procedurerna m.m. i andra
+                sammanhang än bara webbplatsen, medan det kanske kan kännas lättare att få en överblick
+                över all kod om man sköter det i PHP. Skulle vara intressant att höra lite argument för
+                och emot.</p>
+            <p><b>Några reflektioner kring din kod för backenden till webbshopen?</b></p>
+            <p>Jag kikade mycket på exempelkoden för en e-shop, vilket var hjälpsamt för att skapa alla
+                tabeller. Invoice och InvoiceRow är två tabeller jag har skapat, men som inte används
+                av admin eller i mitt SQL-API. Men jag tänkte att jag skulle ha lite framtidstänk och
+                ändå ha med dem. Det blev väldigt många rader kod. Kanske det finns smartare sätt att
+                skriva SQL-koden på men jag gjorde så gott jag kunde i alla fall. Är lite osäker för
+                tillfället på hur väl jag utnyttjar att man kan göra en ROLLBACK. Just det där med
+                felhantering är jag osäker på hur det är ställt för tillfället, men det ska jag ha mer
+                i åtanke i framtiden.</p>
+            <p><b>Något du vill säga om koden generellt i och kring Anax Lite?</b></p>
+            <p>Vi börjar ju närma oss projektarbetet för kursen nu och då ska det bli intressant att få
+                starta igång ett nytt anax-lite från grunden (antar bara nu att det är det vi kommer göra)
+                och se vad jag kan göra bättre för att få en snyggare kod. Man lär sig ju mycket under
+                kursens gång, men det är inte alltid så lätt att implementera allt man lärt sig i all
+                kod man skrivit innan. Det kan vara funktioner jag inte använt mig av, eller hur koden
+                är strukturerad, så det finns nog områden som kommer bli bättre i nytt försök.</p>
             <h3>Kmom06</h3><p>(Kommer uppdateras)</p>
             <h3>Kmom07-10</h3><p>(Kommer uppdateras)</p>
         </div>

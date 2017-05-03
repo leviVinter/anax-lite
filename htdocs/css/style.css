@@ -144,6 +144,14 @@ body {
     padding-bottom: 0;
 }
 
+/*
+ * Webshop
+ */
+.image-webshop {
+    max-height: 500px;
+    max-width: 600px;
+}
+
 .footer {
     padding-top: 20px;
     padding-bottom: 20px;
