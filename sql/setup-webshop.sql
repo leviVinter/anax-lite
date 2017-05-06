@@ -1,5 +1,5 @@
 -- CREATE DATABASE IF NOT EXISTS thhe16;
-USE thhe16;
+-- USE thhe16;
 
 -- Ensure UTF8 as character encoding within connection.
 SET NAMES utf8;
@@ -30,14 +30,16 @@ CREATE TABLE `ProdCategory` (
     `id` INT AUTO_INCREMENT,
     `category` CHAR(20),
 
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `unique_cat` (`category`)
 );
 
 CREATE TABLE `Image` (
     `id` INT AUTO_INCREMENT,
     `name` VARCHAR(120),
 
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `unique_name` (`name`)
 );
 
 CREATE TABLE `Product` (
@@ -50,7 +52,8 @@ CREATE TABLE `Product` (
 
     PRIMARY KEY (`id`),
     FOREIGN KEY (`image_id`) REFERENCES `Image` (`id`),
-    FOREIGN KEY (`cat_id`) REFERENCES `ProdCategory` (`id`)
+    FOREIGN KEY (`cat_id`) REFERENCES `ProdCategory` (`id`),
+    KEY `index_name` (`name`)
 );
 
 
@@ -73,7 +76,8 @@ CREATE TABLE `Inventory` (
 
     PRIMARY KEY (`id`),
     FOREIGN KEY (`prod_id`) REFERENCES `Product` (`id`),
-    FOREIGN KEY (`shelf_id`) REFERENCES `InvenShelf` (`shelf`)
+    FOREIGN KEY (`shelf_id`) REFERENCES `InvenShelf` (`shelf`),
+    KEY `index_items` (`items`)
 );
 
 -- ------------------------------------------------------------------------

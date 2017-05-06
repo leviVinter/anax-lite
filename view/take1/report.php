@@ -220,7 +220,50 @@ $this->renderView("navbar2/navbar");
                 kursens gång, men det är inte alltid så lätt att implementera allt man lärt sig i all
                 kod man skrivit innan. Det kan vara funktioner jag inte använt mig av, eller hur koden
                 är strukturerad, så det finns nog områden som kommer bli bättre i nytt försök.</p>
-            <h3>Kmom06</h3><p>(Kommer uppdateras)</p>
+            <h3>Kmom06</h3>
+            <p><b>Var du bekant med begreppet index i databaser sedan tidigare?</b></p>
+            <p>Ja jag har känt till det sen innan. Lärde mig grunderna i SQL före utbildningen och då
+                fick jag mycket presenterat för mig. Men det är egentligen bara PRIMARY KEY och FOREIGN
+                KEY som jag själv har använt mig av förut, fastän att övriga index-typer också
+                uppenbarligen är väldigt användbara.</p>
+            <p><b>Berätta om hur du jobbade i uppgiften om index och vilka du valde att lägga till och
+                skillnaden före/efter.</b></p>
+            <p>I tabellen Product lade jag in ett index för “name”. Först provade jag en FULLTEXT-index
+                på name, men det fungerade inte i bth-databasen, så det fick bli en vanlig index. Jag
+                valde ett index där för att stödja en potentiell sökfunktion för användare att söka
+                produkter med, men FULLTEXT verkar vara mer lämpat egentligen. Jag provade EXPLAIN
+                SELECT * FROM Product WHERE name LIKE "Fender%", och den behövde bara söka igenom en
+                rad för att hitta rätt. Jag lade in ett unikt index i både Image och
+                ProdCategory-tabellerna. För Image har namnet på filen ett index eftersom admin själv
+                kan välja namn på bilden till en produkt, och då skulle det möjligtvis vara bra att
+                snabbt kolla ifall bildnamnet finns. I ProdCategory satte jag ett unikt index på
+                kategorinamnet för att få tag i det snabbt. Egentligen tror jag att kategorinamnet borde
+                fungera som en primary key, men det borde jag har fixat för länge sen så det fick bli
+                en fullösning nu i slutet.  Jag har också en vanlig index i Inventory-tabellen på
+                kolumnen “items”. Då kan jag snabbt se  ifall det finns mindre än 5 stycken av en viss
+                produkt, vilket möjligtvis skulle kunna vara användbart. Alla dessa index har jag prövat
+                med EXPLAIN på tabellen och de ger snabbare sökningar om man utgår från hur många rader
+                som söks igenom. Jag utnyttjar dock inte dessa index i mina procedurer och liknande,
+                så det får räknas som förberedande för att kunna ändra saker sen.</p>
+            <p><b>Har du tidigare erfarenheter av att skriva kod som testar annan kod?</b></p>
+            <p>Jag jag provade på det en del i oopython-kursen, så jag kände mig därför väldigt hemma i
+                hur man skriver tester. Det här var dock första gång jag använde mig av ett verktyg som
+                kollar hur många rader av en viss klass till exempel som man testat, vilket jag tycker är
+                väldigt användbart om man vill göra det ordentligt.</p>
+            <p><b>Hur ser du på begreppet enhetstestning och att skriva testbar kod?</b></p>
+            <p>Jag tycker det kan vara väldigt användbart. Till exempel kan det vara svårt att se i sin
+                kod ifall allting verkligen kommer bli som man vill ha det. Då kan det vara bra att redan
+                från början skriva ett test parallellt med koden man ska testa. Det kan också vara
+                väldigt användbart om man inte har ett färdigt user interface för att testa sin kod. Man
+                kanske bara har sin klass, och då kan ett enhetstest vara bra till hands. Angående att
+                skriva testbar kod har jag inte så mycket att säga då jag inte har nog bra koll för att
+                veta vad som egentligen är testbart och vad som inte är det.</p>
+            <p><b>Hur gick det att hitta testbar kod bland dina klasser i Anax Lite?</b></p>
+            <p>Eftersom vi skulle hålla det enkelt så var det inte så jättemycket att välja mellan. Jag
+                gjorde ett test på Textfilter-klassen eftersom den inte använder någon databas, cookies
+                eller liknande. Men den var enkel att testa och jag nådde 100% täckning. Jag hade kunnat
+                välja Calendar också, men den kändes inte lika intressant med tanke på att den egentligen
+                bara returnerar en lång html-sträng och att de flesta metoder är privata. </p>
             <h3>Kmom07-10</h3><p>(Kommer uppdateras)</p>
         </div>
     </div>
